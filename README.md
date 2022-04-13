@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ![Python >=3.7](https://img.shields.io/badge/Python->=3.7-yellow.svg)
 ![PyTorch >=1.7](https://img.shields.io/badge/PyTorch->=1.7-blue.svg)
 
@@ -86,4 +87,3 @@ If you find this code useful for your research, please cite our paper
     year      = {2022},
 }
 ```
-
