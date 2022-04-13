@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 ![Python >=3.7](https://img.shields.io/badge/Python->=3.7-yellow.svg)
 ![PyTorch >=1.7](https://img.shields.io/badge/PyTorch->=1.7-blue.svg)
 
@@ -54,15 +52,15 @@ sh test.sh [/path/to/kodak] [model_path]
 **Compress:**
 
 ```bash
-sh compress.sh original.png [model_path]
-(sh compress_parallel.sh original.png [model_path])
+sh compress.sh [original.png] [model_path]
+(sh compress_parallel.sh [original.png] [model_path])
 ```
 
 **Decompress:**
 
 ```bash
-sh decompress.sh original.bin [model_path]
-(sh decompress_parallel.sh original.bin [model_path])
+sh decompress.sh [original.bin] [model_path]
+(sh decompress_parallel.sh [original.bin] [model_path])
 ```
 
 ## Trained Models
