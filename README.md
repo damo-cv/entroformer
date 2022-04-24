@@ -65,7 +65,7 @@ sh decompress.sh [original.bin] [model_path]
 
 ## Trained Models
 
-Download the pre-trained [models]()(coming soon) optimized by MSE.
+Download the pre-trained [models](https://drive.google.com/drive/folders/1pBljoMLghpaGS0t5iywuUkMwCTV0GeSe?usp=sharing) optimized by MSE.
 
 Note: We reorganize code and the performances are slightly different from the paper's.
 
