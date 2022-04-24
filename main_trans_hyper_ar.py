@@ -265,7 +265,8 @@ def compress(shape_num=64):
         tables_y = tables.repeat(opt.last_channels, yh, yw, 1).to(device).permute(3,0,1,2)
         # [1, H, W, C]
         y_symbol = y_hat.type(torch.int16).cpu().permute(0,2,3,1) + opt.table_range
-        pmf_y_logit = criterion_entropy(tables_y, predicted_param.repeat(opt.table_range*2, 1, 1, 1))
+        pmf_y_logit = criterion_entropy(tables_y.half(), predicted_param.repeat(opt.table_range*2, 1, 1, 1).half())
+        pmf_y_logit = pmf_y_logit.float()
         pmf_y = (-pmf_y_logit).exp_().cpu()
         # [1, H, W, C, L]
         pmf_y = pmf_y.permute(2,3,1,0).unsqueeze(0)
@@ -349,7 +350,8 @@ def decompress(shape_num=64):
                     feat_merge = torch.cat([feat_hyper,feat_ar], 1)
                     predicted_param = cit_pn(feat_merge)[:,:,i:i+1,j:j+1]
 
-                    pmf_y_logit = criterion_entropy(tables_y, predicted_param.repeat(opt.table_range*2, 1, 1, 1))
+                    pmf_y_logit = criterion_entropy(tables_y.half(), predicted_param.repeat(opt.table_range*2, 1, 1, 1).half())
+                    pmf_y_logit = pmf_y_logit.float()
                     pmf_y = (-pmf_y_logit).exp_().cpu()
                     # [1, H, W, C, L]
                     pmf_y = pmf_y.permute(2,3,1,0).unsqueeze(0)
@@ -374,7 +376,8 @@ def decompress(shape_num=64):
             feat_merge = torch.cat([feat_hyper,feat_ar], 1)
             predicted_param = cit_pn(feat_merge)
 
-            pmf_y_logit = criterion_entropy(tables_y, predicted_param.repeat(opt.table_range*2, 1, 1, 1))
+            pmf_y_logit = criterion_entropy(tables_y.half(), predicted_param.repeat(opt.table_range*2, 1, 1, 1).half())
+            pmf_y_logit = pmf_y_logit.float()
             pmf_y = (-pmf_y_logit).exp_().cpu()
             pmf_y = pmf_y.permute(2,3,1,0).unsqueeze(0)  # [1, H, W, C, L]
             cdf_y = torch.cumsum(pmf_y , dim=-1)
@@ -397,7 +400,8 @@ def decompress(shape_num=64):
             feat_merge = torch.cat([feat_hyper,feat_ar], 1)
             predicted_param = cit_pn(feat_merge)
 
-            pmf_y_logit = criterion_entropy(tables_y, predicted_param.repeat(opt.table_range*2, 1, 1, 1))
+            pmf_y_logit = criterion_entropy(tables_y.half(), predicted_param.repeat(opt.table_range*2, 1, 1, 1).half())
+            pmf_y_logit = pmf_y_logit.float()
             pmf_y = (-pmf_y_logit).exp_().cpu()
             pmf_y = pmf_y.permute(2,3,1,0).unsqueeze(0)  # [1, H, W, C, L]
             cdf_y = torch.cumsum(pmf_y , dim=-1)

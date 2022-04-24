@@ -13,7 +13,7 @@ MODEL_PATH=checkpoint/entroformer_c${C}_s${S}_z${Z}_hyper_ar_pretrain/relativenu
 mkdir -p $MODEL_PATH
 export CUDA_VISIBLE_DEVICES=$GPU
 python main_trans_hyper_ar.py --alpha ${ALPHA} \
-       --nEpochs 500 --lr 1e-4 \
+       --nEpochs 1000 --lr 1e-4 --lr_decay 1.0 \
        --distribution gauss \
        --na bidirectional \
        --scale ${scale} \

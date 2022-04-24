@@ -16,7 +16,7 @@ python main_trans_hyper_ar.py --mode compress --input_file ${INPUT}\
        --norm GDN \
        --num_parameter 2 \
        --channels ${C} \
-       --last_channels ${S} \ 
+       --last_channels ${S} \
        --hyper_channels ${Z} \
        --dim_embed ${dembed} \
        --depth ${depth} \
