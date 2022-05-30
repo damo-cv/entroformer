@@ -1,5 +1,5 @@
-GPU=$1
-ALPHA=$2
+GPU=0
+ALPHA=$1
 C=192
 S=384
 Z=192
@@ -37,4 +37,4 @@ python main_trans_hyper_ar.py --alpha ${ALPHA} \
        --grad_norm_clip 1.0 \
        --train_dir ./path-to-traindata/ \
        --test_dir ./path-to-testdata/ \
-       --model_pretrained checkpoint/entroformer_c${C}_s${S}_z${Z}_hyper_ar_pretrain/relativenum7_tokenmask0.5_topk32/mse0.3/model_epoch_500.pth
+       --model_pretrained checkpoint/entroformer_c${C}_s${S}_z${Z}_hyper_ar_pretrain/relativenum7_tokenmask0.5_topk32/mse0.3/model_epoch_1000.pth

@@ -39,27 +39,35 @@ kodak
 └── ...
 ```
 
-## Evaluation & Comress & Decompress
+## Train & Evaluate & Comress & Decompress
 
-**Evaluation:**
+**Train:**
+
+```bash
+sh scripts/pretrain.sh 0.3
+sh scripts/train.sh [tradeoff_lambda(e.g. 0.02)]
+(You may use your own dataset by modifying the train/test data path.)
+```
+
+**Evaluate:**
 
 ```bash
 # Kodak
-sh test.sh [/path/to/kodak] [model_path]
+sh scripts/test.sh [/path/to/kodak] [model_path]
 (sh test_parallel.sh [/path/to/kodak] [model_path])
 ```
 
 **Compress:**
 
 ```bash
-sh compress.sh [original.png] [model_path]
+sh scripts/compress.sh [original.png] [model_path]
 (sh compress_parallel.sh [original.png] [model_path])
 ```
 
 **Decompress:**
 
 ```bash
-sh decompress.sh [original.bin] [model_path]
+sh scripts/decompress.sh [original.bin] [model_path]
 (sh decompress_parallel.sh [original.bin] [model_path])
 ```
 
